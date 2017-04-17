@@ -87,3 +87,49 @@ dotnet ef migrations
 
     降版: dotnet ef migrations script 20170412143011_Blogs_SchemaChanges 20170412140305_Initial -o down.txt
     升版: dotnet ef migrations script 20170412140305_Initial 20170412143011_Blogs_SchemaChanges -o up.txt
+
+# 2070417 課程
+### 管理容器映像生命週期與基本指令(IMAGE)    
+    • 列出所有容器映像 ( container image ) – docker images 
+    
+    • 搜尋容器映像 ( Docker Hub ) – docker search TERM 
+    
+    • 建立容器映像 ( 從現有容器建立 ) – docker commit CONTAINER IMAGE 
+    
+    • 建立容器映像 ( 從 Dockerfile 建立 ) – docker build -t REPO:TAG PATH 
+    
+    • 標記指定容器映像 – docker tag IMAGE[:TAG] NEWIMAGE[:TAG] 
+    
+    • 刪除指定容器映像 – docker rmi IMAG
+    
+    
+### 管理容器生命週期與基本指令(CONTAINER)
+
+    • 建立映像實體( image instance ) ( container ) – docker run -it IMAGE COMMAND 
+    
+    • 列出所有容器 – docker ps -a 
+    
+    • 啟動指定容器 – docker start CONTAINER 
+    
+    • 在指定容器中執行命令 – docker exec -it CONTAINER cmd 
+    
+    • 停止指定容器 – docker stop CONTAINER 
+    
+    • 刪除指定容器 – docker rm CONTAINE
+    
+#### Asp.net 複製並測試
+    docker run -name myASP -d microsoft/aspnet 
+    
+    docker exec -it myASP powershell
+    
+    Add-WindowsFeature Web-ASP 
+    
+    docker stop myASP
+    
+    docker commit myASP myasp:1.0
+    
+    docker rm myASP
+    
+    docker run -name myASP -p 8088:80 -d myASP 
+    
+    docker cp C:\a.asp myASP:C:\inetpub\wwwroot
